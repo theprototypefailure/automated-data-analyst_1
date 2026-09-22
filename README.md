@@ -65,15 +65,28 @@ All three are synthetic, so they carry no privacy or licensing baggage.
 ## Run it
 
 ```bash
-git clone https://github.com/saineshnakra/automated-data-analyst.git
-cd automated-data-analyst
-python -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
-python -m pip install -r requirements.txt
-streamlit run app.py
+# Install dependencies
+npm install
+
+# Start the dev server (binds to port 3000)
+npm run dev
+
+# Build for production
+npm run build
 ```
 
-No API key required. The app opens with a built-in demo dataset.
+No API key required. The app opens directly with a built-in deterministic demo dataset, pre-loaded sample datasets (SaaS Subscriptions, Support Tickets, Ecommerce Orders), and drag-and-drop CSV/Excel file loading.
+
+## Architecture
+
+This application was migrated to modern **React 18 + Vite + TypeScript + Tailwind CSS** with client-side deterministic data processing:
+
+- **Data Ingestion**: PapaParse (CSV) and SheetJS/XLSX (Excel) running client-side with zero remote data transfer.
+- **Schema Engine**: Deterministic column role scoring (Measure, Date, Dimension, Identifier, adverse measure detection).
+- **Analytics Engine**: Theil-Sen robust trendline fitting, critical multiplier-calibrated anomaly detection, guarded forecasting, and Pareto concentration analysis.
+- **Visualizations**: Interactive Recharts components (Trend & Guarded Forecast, Segment Breakdown with drill-down, Movement Waterfall, and Segment × Period Matrix Heatmap).
+- **Ask ADA (NLQ)**: Deterministic natural language query engine showing arithmetic calculation formulas underneath every answer.
+- **Data Audit & Export**: Full dataset schema summary, raw table preview, cleaned CSV download, and Markdown Executive Brief export.
 
 ## Does my data leave my machine?
 
